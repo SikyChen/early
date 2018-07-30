@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>加速模式-别踩白块儿</title>
+		<script>
+			//适口设定
+			var num = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,height=device-height,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+',user-scalable=no" />')
+			var fz = document.documentElement.clientWidth / 10;
+			document.getElementsByTagName("html")[0].style.fontSize = fz + "px";
+		</script>
+		<style type="text/css">
+			/*reset*/
+			body, h1, h2, h3, h4, h5, p, dl, dt, dd{margin: 0;}
+			ul{padding: 0;margin: 0;list-style: none;}
+			img{border: 0;vertical-align: top;}
+			img{width: 100%;height: 100%;}
+			body{font-family: "黑体";}
+			.clearfix:after{content: "";display: block;clear: both;}
+			.fl{float: left;}
+			.pr{position: relative;}
+			.pa{position: absolute;}
+			/*index*/
+			body{width: 100%;height: 15rem;/*overflow: hidden*/;position: absolute;left: 0px;bottom: 0px;}
+			#beginfg{width: 100%;height: 100%;z-index: 10;background-color: rgba(0,0,0,0.8);display: block;left: 0px;bottom: 0px;}
+			#beginfg header{width: 6rem;height: 2rem;line-height: 2rem;font-size: 1rem;text-align: center;color: #FFFFFF;position: absolute;bottom: 12rem;left: 2.3rem;}
+			#beginfg #name{width: 6rem;height: 2rem;line-height: 2rem;font-size: 0.5rem;text-align: center;color: #FFFFFF;position: absolute;bottom: 8rem;left: 2rem;}
+			#beginfg #start{width: 5rem;height: 2rem;line-height: 2rem;font-size: 1.2rem;text-align: center;bottom: 4rem;left: 2.5rem;background-color: red;color: #fff;position: absolute;z-index: 20;padding: 0;border: none;}
+			section{width: 100%;height: 100%;left: 0px;bottom: 0px;border-bottom: 2px solid darkblue;display: none;margin-bottom: 0.3rem;}
+			#ulbox{width: 100%;left: 0;bottom: 3rem; background-color: pink;}
+			ul{width: 10rem;height: 3rem;border-bottom: 1px solid black;border-top: 1px solid black;box-sizing: border-box;left: 0px;}
+			li{width: 2.5rem;height: 100%;border-left: 1px solid black;border-right: 1px solid black;box-sizing: border-box;float: left;transition: 1s;}
+			.black{background-color: black;}
+			.red{background-color: red;}
+			#losefg{width: 100%;height: 100%;z-index: 10;background-color: rgba(0,0,0,0.8);display: none;color: #fff;line-height: 4rem;text-align: center;font-size: 2rem;}
+			#goal{line-height: 1.5rem;text-align: center;font-size: 1rem;display: block;}
+			#losefg #restart{width: 5rem;margin: 0.5rem auto; line-height: 1.5rem;text-align: center;font-size: 1rem;background-color: red;}
+			#time{width: 5.5rem;height: 2.5rem;font-size: 1rem;color: red;text-align: center;line-height: 2.5rem;position: absolute;bottom: 11rem;left: 2.5rem;/*background-color: blue;*/}
+		</style>
+	</head>
+	<body class="pr">
+		<div id="beginfg" class="pa">
+			<header>
+				别踩白块儿！
+				加速模式
+			</header>
+			<div id="name">
+				Siky制作，Bug无数<br />
+				按最下面一排的黑色方块~
+			</div>
+			<div id="start">开始游戏</div>
+		</div>
+		<section id="warp" class="pa">
+			<div id="ulbox" class="pa">
+				<ul class="clearfix pa q0">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clearfix pa q1">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clearfix pa q2">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clearfix pa q3">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clearfix pa">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clearfix pa">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clearfix pa">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clearfix pa">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</section>
+		<div id="losefg" class="pa">
+			结束了<br />
+			<span id="goal"></span>
+			<div id="restart">重新开始</div>
+		</div>
+		
+		<script type="text/javascript">
+			//获取元素
+			var beginFg = $('#beginfg');
+			var starBtn = $('#start');
+			var warp = $("#warp");
+			var ulList = $("ul", warp);
+			var liList = $("li", warp);
+			var loseFg = $("#losefg");
+			var goal = $("#goal");
+			var restarBtn = $("#restart");
+			var ulBox = $("#ulbox");
+			
+			//设置body高度，跟可视区域高度相同
+			document.body.style.height = document.documentElement.clientHeight + 'px';
+			//点击开始游戏starBtn按钮，beginFg页面消失，warp页面出现
+			starBtn.addEventListener('touchstart', function(e) {
+				beginFg.style.display = 'none';
+				warp.style.display = 'block';
+				game();
+				e.preventDefault();
+			});
+			//点击重新开始restarBtn按钮，loseFg页面消失，warp页面出现
+			restarBtn.addEventListener('touchstart', function(e) {
+				loseFg.style.display = 'none';
+				game();
+				e.preventDefault();
+			});
+			
+			//整个游戏都是一个函数
+			function game(){
+			//初始化部分
+				//用于游戏结束的判断
+				var onOff = true;
+				
+				//用于积分的num
+				var goalNum = 0;
+				
+				//给ulBox的bottom值初始化
+				ulBox.style.bottom = '3rem';
+				//给所有的ul添加bottom值
+				for (var i = 0; i < ulList.length; i++) {
+					//初始化所有ul没有背景色
+					ulList[i].style.backgroundColor = '';
+					ulList[i].style.bottom = (i)*3 + 'rem';
+					//给每一个ul下的li随机加黑色背景，执行函数
+					liInit(ulList[i]);
+				}
+				
+				//给没行ul的li，随机添加给色块
+				//取0~3的随机数
+				function randomFun(){
+					return Math.round(Math.random() * 3);
+				}
+				//给li添加随机黑色背景,函数
+				function liInit(whichUl) {
+					for (var i = 0; i < $('li', whichUl).length; i++) {
+						$('li', whichUl)[i].className = '';
+					}
+					$('li', whichUl)[randomFun()].className = 'black';
+				}
+				
+				
+				//点击第一个ul下的li，如果是黑色块，则开始游戏（开始运动）
+				//立即执行函数
+				gameFun();
+				function gameFun(){
+					for (var i = 0; i < liList.length; i++) {
+						liList[i].onmousedown = function(e) {
+							//若游戏结束，则不能再点击
+							if(!onOff){
+								return;
+							}
+							//找出所有ul中，最小的bottom值
+							var minBot = ulList.length*3;
+							for( var j = 0; j < ulList.length; j++ ){
+								if( getBot(ulList[j]) < minBot){
+									minBot = getBot(ulList[j])
+								}
+							}
+							//通过判断当前ul是否是bottom值最小的ul，和所点击li是否为黑li，来判断游戏是否要进行下去
+							if( getBot(this.parentNode) <= minBot && this.className == 'black'){
+								//取消此黑块的黑色
+								this.className = '';
+								//给当前ul放到最顶端
+								this.parentNode.style.bottom = (getBot(this.parentNode) + ulList.length*3) + 'rem';
+								for( var j = 0; j < ulList.length; j++ ){
+									ulList[j].style.bottom = (getBot(ulList[j]) - 3) + 'rem';
+								}
+								ulBox.style.bottom = (getBot(ulBox) + 3) + 'rem';
+								//给此ul随机加黑色li
+								liInit(this.parentNode);
+								
+								//得一分
+								goalNum++;
+								//此处添加判断，当goalNum达到多大时，速度变为多少
+								if(goalNum <= 20){
+									duration = 3000;
+								}else if(goalNum > 20 && goalNum <= 40){
+									duration = 2500;
+								}else if(goalNum > 40 && goalNum <= 70){
+									duration = 2000;
+								}else if(goalNum > 70 && goalNum <= 100){
+									duration = 1500;
+								}else if(goalNum > 100){
+									duration = 1000;
+								}
+								//让所有ul都向下跑
+								runFun(duration);
+								//每次点击都递归此函数，使其可以不停操作循环
+								gameFun();
+							}else {
+								//失败结果一（点错li），所点击li不是黑色，或者不是最下面一行
+								//点错的li变为红色
+								this.className = 'red';
+								//清除定时器，运动停止
+			   					clearInterval(ulBox['bottom']);
+								//游戏结束开关
+								onOff = false;
+								//游戏结束后1s弹出失败页面
+								setTimeout(function(){
+									loseFg.style.display = 'block';
+									goal.innerText = '得分:' + goalNum;
+									document.title = '踩黑块我得了'+goalNum+'分哦，来挑战我吧！';
+								},500);
+							}
+							
+//							e.preventDefault();
+						}
+					}
+				}
+				
+				//所有ul向下匀速运动的一个函数
+				function runFun(duration){
+						mTween(ulBox, 'bottom', -18, duration, 'linear', function(){
+							//游戏结束的函数
+							if(getBot(ulBox) <= -1){
+								for (var i = 0; i < ulList.length; i++) {
+									if( getBot(ulList[i]) == 0 ){
+										ulList[i].style.backgroundColor = 'red';
+									}
+								}
+			   					//清除定时器，运动停止
+			   					clearInterval(ulBox['bottom']);
+								onOff = false;
+								setTimeout(function(){
+									loseFg.style.display = 'block';
+									goal.innerText = '得分:' + goalNum;
+									document.title = '踩黑块我得了'+goalNum+'分哦，来挑战我吧！';
+								},500);
+							}
+						});
+				}
+				
+				
+			}	
+			
+			
+			
+			
+		//工具函数tools
+			//获取元素函数
+			function $(selector, context) {
+				context = context || document;
+				if(selector.charAt() == '#') {
+					//获取id
+					return context.getElementById(selector.slice(1));
+				}else if(selector.charAt() == '.') {
+					//获取className
+					return context.getElementsByClassName(selector.slice(1));
+				}else {
+					//获取tagname
+					return context.getElementsByTagName(selector);
+				}
+			}
+			
+			//获取ul的bottom值的函数
+			function getBot(obj){
+				return (parseFloat(getComputedStyle(obj).bottom)) / fz;
+			}
+			
+			
+			
+			//运动函数mtween
+			function mTween(obj, attr, target, duration, fx, callback) {
+			    clearInterval(obj[attr]);
+			    var startTime = new Date().getTime();
+			    var b = getBot(obj);
+			    var c = target;
+			    var d = duration;
+			
+			    obj[attr] = setInterval(function() {
+			
+			        var t = new Date().getTime() - startTime;
+			
+			        if ( t >= d ) {
+			            t = d;
+			        }
+			
+			        var value = Tween[fx](t, b, c, d);
+			
+			        //根据要改变的属性来做判断，比如要改变的属性如果是透明度
+			        if ( attr == 'opacity' ) {
+			            obj.style[attr] = value;
+			        } else {
+			            obj.style[attr] = value + 'rem';
+			        }
+			        
+		            if (typeof callback == 'function') {
+		                callback();
+		            }
+			    }, 16);
+			}
+			var Tween = {
+			    linear: function (t, b, c, d){  //匀速
+			        return c*t/d + b;
+			    }
+			}
+		</script>
+	</body>
+</html>
+
+

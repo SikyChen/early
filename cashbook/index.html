@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script type="text/javascript">
+        document.addEventListener('plusready', function() {
+            //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+
+        });
+    </script>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+    <section id="app">
+        <header class="g-hd clearfix">
+            <h3>账</h3>
+            <div class="u-month_box">
+                <span v-on:click="trunLastMonth()"><</span>
+                <span class="u-month">
+                    {{year}}年 {{month}}月
+                </span>
+                <span v-on:click="trunNextMonth()">></span>
+            </div>
+            <div class="m-inout">
+                <div class="u-in">收入：{{allInOut.allIn}}元</div>
+                <div class="u-out">支出：{{allInOut.allOut}}元</div>
+            </div>
+        </header>
+        <section class="g-bd">
+            <ul class="m-day_list">
+                <li is="c-day-item" v-on:deletitem="changeitembox" v-bind:idate="idate" v-bind:dayitem="dayItems(idate)" v-for="idate in monthDays"></li>
+                <!--<li class="m-day_item">
+					<header>
+						<div class="u-date">
+							<span>1月2日 星期一</span>
+						</div>
+						<div class="u-pay_day">
+							<span>支出：1024</span>
+						</div>
+					</header>
+					<ul>
+						<li class="u-item">
+							<div class="u-category">吃</div>
+							<div class="u-item_info">
+								<div class="u-name">
+									<span>爆米花</span>
+								</div>
+								<div class="u-pay_item">
+									<span>-24</span>
+								</div>
+							</div>
+						</li>
+						<li class="u-item">
+							<div class="u-category">吃</div>
+							<div class="u-item_info">
+								<div class="u-name">
+									<span>爆米花</span>
+								</div>
+								<div class="u-pay_item">
+									<span>-24</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>-->
+            </ul>
+        </section>
+        <footer class="g-ft" v-on:click="">
+            <div v-on:click="addBoxFun('inbox')">+ 收入</div>
+            <div v-on:click="addBoxFun('outbox')">- 支出</div>
+        </footer>
+        <!--添加支出信息的弹窗-->
+        <div class="g-outbox" v-show="outbox" v-on:click.self="addBoxFun()">
+            <div class="m-outbox">
+                <ul class="u-category_select">
+                    <li>
+                        <input type="radio" id="one" value="吃" v-model="itemcategory">
+                        <label for="one">吃</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="two" value="住" v-model="itemcategory">
+                        <label for="two">住</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="three" value="行" v-model="itemcategory">
+                        <label for="three">行</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="four" value="玩" v-model="itemcategory">
+                        <label for="four">玩</label>
+                    </li>
+                </ul>
+                <span class="u-label">备注</span>
+                <input class="u-input" type="text" v-model="itemtitle">
+                <br>
+                <span class="u-label">金额</span>
+                <input class="u-input" type="text" v-model="itempay" type="number">
+                <div class="u-errormsg">
+                    <span v-show="itempayerror">请完整填写信息且金额必须是不为0的数字</span>
+                </div>
+                <div class="u-btn" @click="addItemFun('outbox')">确定</div>
+            </div>
+        </div>
+        <!--添加收入信息的弹窗-->
+        <div class="g-inbox" v-show="inbox" v-on:click.self="addBoxFun()">
+            <div class="m-inbox">
+                <ul class="u-category_select">
+                    <li></li>
+                    <li>
+                        <input type="radio" id="five" value="工" v-model="itemcategory">
+                        <label for="five">工</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="six" value="外" v-model="itemcategory">
+                        <label for="six">外</label>
+                    </li>
+                </ul>
+                <span class="u-label">备注</span>
+                <input class="u-input" type="text" v-model="itemtitle">
+                <br>
+                <span class="u-label">金额</span>
+                <input class="u-input" type="text" v-model="itemin" type="number">
+                <div class="u-errormsg">
+                    <span v-show="itempayerror">请完整填写信息且金额必须是不为0的数字</span>
+                </div>
+                <div class="u-btn" @click="addItemFun('inbox')">确定</div>
+            </div>
+        </div>
+        <!--菜单 弹窗-->
+        <div class="g-changebox" v-show="changebox" v-on:click.self="addBoxFun()">
+            <ul class="m-changebox">
+                <!--<li>未实现的修改功能</li>-->
+                <li v-on:click="deletItemFun()">删除</li>
+            </ul>
+        </div>
+    </section>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <!--<script type="text/javascript " src="js/data.js "></script>-->
+    <script type="text/javascript " src="js/components.js "></script>
+    <script type="text/javascript " src="js/index.js "></script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "css/index.css",
+      "js/vue.js",
+      "js/data.js",
+      "js/components.js",
+      "js/index.js"
+    ],
+    "refer": [],
+    "priority": 0
+  }
+}

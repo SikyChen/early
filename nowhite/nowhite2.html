@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>计时模式-别踩白块儿</title>
+		<script>
+			//适口设定
+			var num = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+num+',minimum-scale='+num+',maximum-scale='+num+',user-scalable=no" />')
+			var fz = document.documentElement.clientWidth / 10;
+			document.getElementsByTagName("html")[0].style.fontSize = fz + "px";
+			//tools
+			function $(selector, context) {
+				context = context || document;
+				if(selector.charAt() == '#') {
+					//获取id
+					return context.getElementById(selector.slice(1));
+				}else if(selector.charAt() == '.') {
+					//获取className
+					return context.getElementsByClassName(selector.slice(1));
+				}else {
+					//获取tagname
+					return context.getElementsByTagName(selector);
+				}
+			}
+		</script>
+		<style type="text/css">
+			/*reset*/
+			body, h1, h2, h3, h4, h5, p, dl, dt, dd{margin: 0;}
+			ul{padding: 0;margin: 0;list-style: none;}
+			img{border: 0;vertical-align: top;}
+			img{width: 100%;height: 100%;}
+			body{font-family: "黑体";}
+			.clearfix:after{content: "";display: block;clear: both;}
+			.fl{float: left;}
+			.pr{position: relative;}
+			.pa{position: absolute;}
+			/*index*/
+			body{width: 100%;height: 15rem;overflow: hidden;position: absolute;left: 0px;bottom: 0px;}
+			#beginfg{width: 100%;height: 15rem;z-index: 10;background-color: rgba(0,0,0,0.8);display: block;left: 0px;bottom: 0px;}
+			#beginfg header{width: 6rem;height: 2rem;line-height: 2rem;font-size: 1rem;text-align: center;color: #FFFFFF;position: absolute;bottom: 12rem;left: 2.3rem;}
+			#beginfg #name{width: 6rem;height: 2rem;line-height: 2rem;font-size: 0.5rem;text-align: center;color: #FFFFFF;position: absolute;bottom: 8rem;left: 2rem;}
+			#beginfg #start{width: 5rem;height: 2rem;line-height: 2rem;font-size: 1.2rem;text-align: center;bottom: 4rem;left: 2.5rem;background-color: red;color: #fff;position: absolute;z-index: 20;padding: 0;border: none;}
+			section{height: 14rem;left: 0px;top: 0px;display: none;}
+			ul{width: 10rem;height: 3rem;border-bottom: 1px solid black;border-top: 1px solid black;box-sizing: border-box;left: 0px;}
+			li{width: 2.5rem;height: 100%;border-left: 1px solid black;border-right: 1px solid black;box-sizing: border-box;float: left;}
+			.black{background-color: black;}
+			#losefg{width: 100%;height: 17.75rem;z-index: 10;background-color: rgba(0,0,0,0.6);display: none;color: #fff;line-height: 4rem;text-align: center;font-size: 2rem;}
+			#goal{line-height: 1.5rem;text-align: center;font-size: 1rem;display: block;}
+			#losefg #restart{width: 5rem;margin: 0.5rem auto; line-height: 1.5rem;text-align: center;font-size: 1rem;background-color: red;}
+			#time{width: 5.5rem;height: 2.5rem;font-size: 1rem;color: red;text-align: center;line-height: 2.5rem;position: absolute;bottom: 11rem;left: 2.5rem;/*background-color: blue;*/}
+		</style>
+		<!--<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/tools.js" ></script>-->
+	</head>
+	<body class="pr">
+		<div id="beginfg" class="pa">
+			<header>
+				别踩白块儿2
+				计时模式
+			</header>
+			<div id="name">
+				Siky制作<br />
+				按最下面一排的黑色方块~
+			</div>
+			<div id="start">开始游戏</div>
+		</div>
+		<section id="warp" class="pa">
+			<ul class="clearfix pa q0">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="clearfix pa q1">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="clearfix pa q2">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="clearfix pa q3">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="clearfix pa">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="clearfix pa">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="clearfix pa">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="clearfix pa">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div id="time" class="pa"></div>
+		</section>
+		<div id="losefg" class="pa">
+			结束了<br />
+			<span id="goal"></span>
+			<div id="restart">重新开始</div>
+		</div>
+		
+		<script>
+			//获取元素
+			var warp = $('#warp');
+			var ulList = $('ul', warp);
+			var liList = $('li');
+			var loseFg = $('#losefg');
+			var goal = $('#goal');
+			var time1 = $('#time');
+			var beginFg = $('#beginfg');
+			var starBtn = $('#start');
+			var restarBtn = $("#restart");
+			
+			var timer = null;
+			
+			warp.style.display = 'block';
+			//开始界面
+			starBtn.onclick = function(){
+				beginFg.style.display = 'none';
+				game();
+			}
+			restarBtn.onclick = function(){
+				loseFg.style.display = 'none';
+				game();
+			}
+			
+			//整个游戏过程，都是一个函数
+		function game(){
+		
+			//得分
+			var num = 0;
+			//时间 初始化
+			var timeNum = 20;
+			time1.innerText = '倒计时' + timeNum + '秒';
+			//清除定时器
+			clearInterval(timer);
+			
+			/*
+			 	分析：
+			 	点击最下面一排，那么这一排的bottom值变到最大，其他排top值各自减少一个单位
+			 */
+			
+			//0到3的随机数 0 1 2 3
+			function randomFun(){
+				return Math.round(Math.random() * 3);
+			}
+			
+			//给ul定位置
+			ulBottom();
+			function ulBottom(){
+				for (var i = 0; i < ulList.length; i++) {
+					ulList[i].style.bottom = i * 3 + 'rem';
+					liInit(ulList[i]);
+				}
+			}
+			
+			//初始化	给li随机加黑色背景
+			function liInit(whichUl) {
+				for (var i = 0; i < $('li', whichUl).length; i++) {
+					$('li', whichUl)[i].className = '';
+					$('li', whichUl)[i].style.backgroundColor = '';
+				}
+				$('li', whichUl)[randomFun()].className = 'black';
+			}
+			
+			//获取ul的bottom值的函数
+			function getBot(obj){
+				return parseFloat(obj.style.bottom);
+			}
+			
+			
+			
+			//点击一个li，判断它所在的ul是否bottom为0，且其className为black，若是则执行函数
+			var onOff = true;
+			var n = 0;
+			fn(n);
+			function fn(n){
+				for (var j = 0; j < $('li', ulList[n]).length; j++) {
+					$('li', ulList[n])[j].onmousedown = function() {
+						if( this.className == 'black' && getBot(ulList[n]) == 0){
+							if(onOff) {
+								clearInterval(timer);
+								timeFun();
+								onOff = false;
+							}
+							//所有ul都下降一排
+							for (var i = 0; i < ulList.length; i++) {
+								ulList[i].style.bottom = (getBot(ulList[i]) - 3) + 'rem';
+							}
+							//原本最下面一排回到最高一排
+							ulList[n].style.bottom = (ulList.length-1) * 3 + 'rem';
+							//重置它黑块的位置
+							liInit(ulList[n]);
+							num++;
+							return fn((n+1)%8);
+						}else {
+							this.style.backgroundColor = 'red';
+							loseFg.style.display = 'block';
+							goal.innerHTML = "得分：" + num;
+							timeNum = 20;
+							clearInterval(timer);
+						}
+					}
+				}
+			}
+			
+			//添加一个定时器
+			function timeFun() {
+				timeNum = 20;
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(timeNum > 0) {
+						timeNum--;
+						console.log(timeNum);
+						time1.innerText = '还剩' + timeNum + '秒';
+					}else {
+						clearInterval(timer);
+						loseFg.style.display = 'block';
+						goal.innerHTML = "得分：" + num;
+					}
+				},1000)
+			}
+		}	
+			
+		</script>
+		<!--
+			遗留问题：
+			在得到8分之前，点击到非最下面一排的方块，可能不会失败
+		-->
+	</body>
+</html>
+

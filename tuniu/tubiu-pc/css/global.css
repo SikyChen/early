@@ -1,0 +1,498 @@
+
+/*登陆条*/
+.loginbar{
+	height: 29px;
+	border-bottom: 1px solid #eee;
+	background-color: #f8f8f8;
+	line-height: 30px;
+}
+.loginbar .loginbox{
+	height: 30px;
+	margin-left: 4px;
+	color: #404040;
+}
+.loginbar a{
+	color: #404040;
+}
+.loginbar .line1{
+	width: 1px;
+	height: 14px;
+	background-color: #ccd8e4;
+	margin: 8px 5px 0 6px;
+}
+.loginbar .user{
+	height: 30px;
+}
+.loginbar .user .vip{
+	color: #ff8800;
+	margin-right: 25px;
+}
+.loginbar .user .userorder{
+	width: 58px;
+	height: 30px;
+	margin-right: 26px;
+}
+.loginbar .user .arrowmark{
+	margin-top: 13px;
+}
+.loginbar .user .warpmap{
+	width: 58px;
+	height: 30px;
+	margin-right: 25px;
+}
+.loginbar .user .weibo{
+	width: 18px;
+	height: 13px;
+	margin: 9px 25px 0 0;
+	background-position: -12px 0;
+}
+.loginbar .user .app{
+	width: 11px;
+	height: 17px;
+	margin: 3px 26px 0 0;
+	background-position: 0 -10px;
+}
+.loginbar .user .weixin{
+	width: 18px;
+	height: 14px;
+	margin: 8px 14px 0 0;
+	background-position: -12px -14px;
+}
+
+
+
+
+/*搜索框条*/
+.searchbar{
+	border-bottom: 3px solid #38c249;
+}
+.searchbarin{
+	height: 132px;
+	position: relative;
+}
+.searchbarin .logo{
+	top: 27px;
+	width: 124px;
+	height: 53px;
+}
+.searchbarin .title{
+	height: 0;
+	text-indent: -9999px;
+}
+.searchbarin .logo .pic{
+	width: 124px;
+	height: 53px;
+	display: block;
+}
+.searchbar .local_city{
+	width: 61px;
+	height: 44px;
+	left: 171px;
+	top: 29px;
+}
+.searchbar .local_city .local_beijing{
+	width: 61px;
+	height: 28px;
+	font: 14px/28px "宋体";
+	color: #000;
+}
+.searchbar .local_city .local_beijing .arrowmark{
+	margin: 14px 0 0 5px;
+}
+.searchbar .local_city .local_office{
+	width: 61px;
+	height: 16px;
+	background-position: 0 -29px;
+	display: block;
+}
+.searchbar .searchbox{
+	width: 557px;
+	height: 40px;
+	left: 294px;
+	top: 30px;
+}
+.searchbar .searchbox a{
+	color: #999;
+}
+.searchbar .searchbox .searchboxin{
+	width: 422px;
+	height: 34px;
+	border: 3px solid #ff8800;
+}
+.searchbar .searchbox .all{
+	width: 89px;
+	height: 34px;
+	background-color: #f8f8f8;
+	border-right: 1px solid #e5e5e5;
+	line-height: 36px;
+	text-indent: 15px;
+	top: 0;
+	left: 0;
+}
+.searchbar .searchbox .all .arrowmark2{
+	margin: 15px 13px 0 0;
+}
+.searchbar .searchbox .searchinput{
+	top: 0;
+	left: 90px;
+}
+.searchbar .searchbox .searchinput #search{
+	width: 330px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	line-height: 32px;
+}
+.searchbar .searchbox .hotsearchbox{
+	width: 140px;
+	height: 34px;
+	right: 0;
+}
+.searchbar .searchbox .hotsearch{
+	width: 34px;
+	height: 28px;
+	background-color: #f3f3f3;
+	margin: 3px 0 0 10px;
+	text-align: center;
+	line-height: 28px;
+	border-radius: 14px;
+}
+.searchbar .searchbox .button{
+	width: 64px;
+	height: 40px;
+	background-color: #ff8800;
+}
+.searchbar .searchbox .buttonin{
+	width: 17px;
+	height: 15px;
+	margin: 10px 0 0 23px;
+	background-position: -31px 0;
+}
+.searchbar .searchbox .searchadbox{
+	width: 65px;
+	height: 40px;
+	line-height: 38px;
+	text-indent: 7px;
+}
+.searchbar .searchbox .searchadbox .arrowmark{
+	margin: 16px 0 0 5px;
+}
+.searchbar .tel{
+	width: 200px;
+	height: 83px;
+	right: 0;
+	top: 6px;
+	background: url(../img/jay.png) no-repeat;
+}
+.searchbar .tel .tel_text{
+	line-height: 12px;
+	margin: 35px 0 7px 28px;
+	color: #4e4e4e;
+	display: block;
+}
+.searchbar .tel .tel_num{
+	height: 14px;
+	font: 16px/16px arial;
+	font-weight: bold;
+	color: #ff6600;
+	display: block;
+	text-shadow:#f7f7f7 1px 0 0,#fff 0 1px 0,#fff -1px 0 0,#fff 0 -1px 0;
+}
+.searchbar .navbar{
+	width: 1190px;
+	position: absolute;
+	bottom: 0;
+}
+.searchbar .navbar .active{
+	height: 32px;
+	font-size: 16px;
+	line-height: 32px;
+	padding: 0 25px 0 23px;
+	font-weight: bold;
+	background-color: #4ece5a;
+	color: #fff;
+}
+.searchbar .navbar .nav{
+	height: 32px;
+	font-size: 16px;
+	line-height: 32px;
+	padding: 0 23px;
+	color: #2b8f08;
+}
+.searchbar .navbar .pal{
+	padding-left: 10px;
+}
+.searchbar .navbar .nav:hover{
+	background-color: #4ece5a;
+	color: #fff;
+}
+.searchbar .navbar .nav .arrowmark3{
+	width: 5px;
+	height: 3px;
+	background-position: -35px -17px;
+	top: 17px;
+	right: 12px;
+}
+.searchbar .ico_quality{
+	width: 25px;
+	height: 16px;
+	background-position: -49px 0;
+	left: 591px;
+	top: 93px;
+	overflow:;
+}
+.searchbar .ico_wifi{
+	width: 25px;
+	height: 16px;
+	background-position: -75px 0;
+	left: 669px;
+	top: 93px;
+}
+.searchbar .ico_hot{
+	width: 19px;
+	height: 16px;
+	background-position: -101px 0;
+	left: 826px;
+	top: 93px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*通用页脚*/
+.foot{
+	height: 738px;
+	border-top: 1px solid #d8d8d8;
+}
+.link{
+	height: 217px;
+	background-color: #f5f5f5;
+}
+.foot .linkin{
+	width: 1190px;
+	height: 217px;
+	margin: 0 auto;
+}
+.foot .linkin .cha{
+	padding: 20px 0 0 85px;
+}
+.foot .linkin .cha .item{
+	width: 170px;
+	/*padding-right: 20px;*/
+	border-right: 1px dotted #999;
+}
+.foot .linkin .cha .item1{
+	width: 300px;
+}
+.foot .linkin .cha .item5{
+	border-right: 0px;
+}
+.foot .linkin .cha .item .title2{
+	height: 46px;
+	padding-left: 20px;
+}
+.foot .linkin .cha .item .title2 .ico1{
+	width: 35px;
+	height: 35px;
+	background-position: -201px -465px;
+	margin-right: 10px;
+}
+.foot .linkin .cha .item .title2 .ico2{
+	width: 35px;
+	height: 35px;
+	background-position: -237px -465px;
+	margin-right: 10px;
+}
+.foot .linkin .cha .item .title2 .ico3{
+	width: 35px;
+	height: 35px;
+	background-position: -201px -501px;
+	margin-right: 10px;
+}
+.foot .linkin .cha .item .title2 .ico4{
+	width: 35px;
+	height: 35px;
+	background-position: -203px -388px;
+	margin-right: 10px;
+}
+.foot .linkin .cha .item .title2 .ico5{
+	width: 35px;
+	height: 35px;
+	background-position: -237px -501px;
+	margin-right: 10px;
+}
+.foot .linkin .cha .item .title2 .msg{
+	line-height: 35px;
+	font-size: 14px;
+	font-weight: bold;
+}
+.foot .linkin .cha .content{
+	padding-left: 65px;
+	line-height: 18px;
+}
+.foot .linkin .cha .content .lie{
+	width: 70px;
+}
+
+
+.foot .linkin .cha .content .code{
+	padding-top: 10px;
+}
+
+
+.foot .tel{
+	height: 62px;
+	background-color: #61ca6e;
+}
+.foot .telin{
+	width: 1190px;
+	height: 62px;
+	margin: 0 auto;
+	background: url(../img/tel.jpg) no-repeat;
+}
+.foot .telin .sunny{
+	width: 200px;
+	height: 62px;
+	margin-right: 70px;
+}
+.foot .what{
+	width: 990px;
+	height: 60px;
+	margin-top: 10px;
+}
+.foot .what .item{
+	width: 238px;
+	height: 58px;
+	border: 1px solid #d8d8d8;
+}
+.foot .what .item .pic{
+	width: 107px;
+	height: 58px;
+}
+.foot .what .item .info{
+	width: 120px;
+	height: 45px;
+	padding-top: 10px;
+	line-height: 20px;
+	color: #999;
+}
+.foot .specialjay{
+	width: 988px;
+	height: 58px;
+	border: 1px solid #999;
+	margin-top: 10px;
+}
+.foot .copyright{
+	height: 100px;
+	padding-top: 11px;
+	text-align: center;
+	line-height: 23px;
+	color: #999;
+}
+.foot .why{
+	width: 551px;
+	height: 40px;
+}
+.foot .why .item{
+	width: 177px;
+	height: 40px;
+}
+.foot .neworder{
+	height: 36px;
+	line-height: 36px;
+	word-spacing: 20px;
+	text-align: center;
+	color: #999;;
+}
+.foot .z_logo{
+	height: 51px;
+	padding: 7px 0 0 67px;
+}
+.foot .footsfoot{
+	height: 59px;
+	padding-top: 13px;
+	border-top: 1px solid #999;
+}
+.foot .footsfoot .ti{
+	padding-left: 95px;
+}
+.foot .footsfoot .friendlink{
+	width: 910px;
+}
+.foot .footsfoot .friendlink .gray:hover{
+	color: #ff6600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.foot .copyright{
+	width: 1190px;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,170 @@
+
+
+body{
+	font: 12px "Hiragino Sans GB","microsoft yahei",arial,"微软雅黑","宋体";
+}
+
+
+/*清浮动*/
+.clearfix{
+	zoom: 1;
+}
+.clearfix:after{
+	content:"";
+	display: block;
+	clear: both;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+/*margin通用值*/
+.marr0{
+	margin-right: 0px;
+}
+.marr2{
+	margin-right: 2px;
+}
+.marr5{
+	margin-right: 5px;
+}
+.marr7{
+	margin-right: 7px;
+}
+.marr8{
+	margin-right: 8px;
+}
+.marr10{
+	margin-right: 10px;
+}
+.marr11{
+	margin-right: 11px;
+}
+.marr15{
+	margin-right: 15px;
+}
+.marr16{
+	margin-right: 16px;
+}
+.marr17{
+	margin-right: 17px;
+}
+.marr18{
+	margin-right: 18px;
+}
+.marr20{
+	margin-right: 20px;
+}
+.marr25{
+	margin-right: 25px;
+}
+.marr50{
+	margin-right: 50px;
+}
+.marr67{
+	margin-right: 67px;
+}
+.marl5{
+	margin-left: 5px;
+}
+.marl12{
+	margin-left: 12px;
+}
+.marl85{
+	margin-left: 85px;
+}
+.marb39{
+	margin-bottom: 39px;
+}
+.mart2{
+	margin-top: 2px;
+}
+.mart11{
+	margin-top: 11px;
+}
+.mart39{
+	margin-top: 39px;
+}
+
+
+
+
+
+.pr{
+	position: relative
+}
+.pa{
+	position: absolute;
+}
+
+.bg{
+	background-image: url(../img/CssSprites.png);
+	background-repeat: no-repeat;
+}
+
+
+
+.arrowmark{
+	width: 5px;
+	height: 3px;
+	background: url(../img/CssSprites.png) no-repeat 0 0;
+}
+.arrowmark2{
+	width: 7px;
+	height: 4px;
+	background: url(../img/CssSprites.png) no-repeat 0 -5px;
+}
+
+/*1190px居中*/
+.forauto{
+	width: 1190px;
+	margin: 0 auto;
+}
+.forauto1200{
+	width: 1200px;
+	margin: 0 auto;
+}
+/*最小高度*/
+section, div, a, span{
+	overflow: hidden;
+}
+/*强制不换行*/
+span{
+	white-space: nowrap;
+}
+a{
+	white-space: nowrap;
+}
+li{
+	*vertical-align: top;
+	_vertical-align: top;
+}
+.red{
+	color: #ff6600;
+}
+.black{
+	color: #000;
+}
+.gray{
+	color: #999;
+}
+
+
+/*透明显示*/
+/*{
+	filter: alpha(opacity=80);
+}*/
+
+
+
+
+
+
+
+
+
+
+

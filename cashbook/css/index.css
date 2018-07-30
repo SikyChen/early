@@ -1,0 +1,334 @@
+body {
+  font-family: "微软雅黑";
+}
+body,
+ul,
+li,
+h3 {
+  padding: 0;
+  margin: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+.clearfix {
+  content: '';
+  display: block;
+  clear: both;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  height: 100%;
+  overflow: auto;
+}
+#app {
+  height: 100%;
+  overflow: auto;
+  background-color: lightgray;
+}
+.g-hd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  background-color: cornflowerblue;
+  color: #000;
+  text-align: center;
+}
+.g-hd h3 {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  height: 30px;
+  width: 30px;
+  line-height: 32px;
+  border-radius: 15px;
+  background-color: #fff;
+  color: cornflowerblue;
+}
+.g-hd .u-month_box {
+  width: 100%;
+  display: inline-block;
+  line-height: 50px;
+}
+.g-hd .u-month_box span {
+  display: inline-block;
+  padding: 0 10px;
+}
+.g-hd .u-month_box .u-month {
+  padding: 0;
+  width: 120px;
+}
+.g-hd .m-inout {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 50px;
+  border-top: 1px solid darkgray;
+  border-bottom: 1px solid darkgray;
+  background-color: ghostwhite;
+  line-height: 50px;
+  text-align: center;
+  z-index: 10;
+}
+.g-hd .m-inout .u-in,
+.g-hd .m-inout .u-out {
+  box-sizing: border-box;
+  width: 50%;
+  overflow: hidden;
+}
+.g-hd .m-inout .u-in {
+  float: left;
+}
+.g-hd .m-inout .u-out {
+  border-left: 1px solid darkgray;
+  float: right;
+}
+.g-bd {
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  bottom: 50px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.g-bd .m-day_list .m-day_item header:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.g-bd .m-day_list .m-day_item header {
+  box-sizing: border-box;
+  height: 30px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 30px;
+}
+.g-bd .m-day_list .m-day_item header .u-date {
+  float: left;
+}
+.g-bd .m-day_list .m-day_item header .u-pay_day {
+  float: right;
+}
+.g-bd .m-day_list .m-day_item .u-item:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.g-bd .m-day_list .m-day_item .u-item {
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  line-height: 40px;
+}
+.g-bd .m-day_list .m-day_item .u-item .u-category {
+  float: left;
+  margin: 10px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: lightgray;
+  color: cornflowerblue;
+  text-align: center;
+}
+.g-bd .m-day_list .m-day_item .u-item .u-item_info:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.g-bd .m-day_list .m-day_item .u-item .u-item_info {
+  margin-left: 55px;
+  padding: 10px 15px 0;
+  box-sizing: border-box;
+  border-top: 1px solid darkgray;
+}
+.g-bd .m-day_list .m-day_item .u-item .u-item_info .u-name {
+  float: left;
+}
+.g-bd .m-day_list .m-day_item .u-item .u-item_info .u-pay_item {
+  float: right;
+}
+.g-bd .m-day_list .m-day_item .u-item:nth-child(1) .u-item_info {
+  border-top: 0px;
+}
+.g-ft:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.g-ft {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-top: 1px solid darkgray;
+  color: cornflowerblue;
+  background-color: ghostwhite;
+  font-size: 20px;
+}
+.g-ft div {
+  width: 50%;
+  float: left;
+}
+.g-ft div.hover {
+  background-color: cornflowerblue;
+  color: ghostwhite;
+}
+.g-outbox,
+.g-inbox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.g-outbox .m-outbox,
+.g-inbox .m-outbox,
+.g-outbox .m-inbox,
+.g-inbox .m-inbox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 90%;
+  height: 250px;
+  box-sizing: border-box;
+  padding: 0 10%;
+  background-color: ghostwhite;
+  border-radius: 8px;
+}
+.g-outbox .m-outbox .u-category_select:after,
+.g-inbox .m-outbox .u-category_select:after,
+.g-outbox .m-inbox .u-category_select:after,
+.g-inbox .m-inbox .u-category_select:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.g-outbox .m-outbox .u-category_select,
+.g-inbox .m-outbox .u-category_select,
+.g-outbox .m-inbox .u-category_select,
+.g-inbox .m-inbox .u-category_select {
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+.g-outbox .m-outbox .u-category_select li,
+.g-inbox .m-outbox .u-category_select li,
+.g-outbox .m-inbox .u-category_select li,
+.g-inbox .m-inbox .u-category_select li {
+  float: left;
+  width: 25%;
+  height: 20px;
+  padding: 10px 0;
+}
+.g-outbox .m-outbox .u-category_select li span,
+.g-inbox .m-outbox .u-category_select li span,
+.g-outbox .m-inbox .u-category_select li span,
+.g-inbox .m-inbox .u-category_select li span {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 20px;
+  background-color: lightgray;
+  color: cornflowerblue;
+}
+.g-outbox .m-outbox .u-label,
+.g-inbox .m-outbox .u-label,
+.g-outbox .m-inbox .u-label,
+.g-inbox .m-inbox .u-label {
+  color: cornflowerblue;
+  text-align: center;
+}
+.g-outbox .m-outbox .u-input,
+.g-inbox .m-outbox .u-input,
+.g-outbox .m-inbox .u-input,
+.g-inbox .m-inbox .u-input {
+  margin: 10px;
+  width: 70%;
+  height: 30px;
+  text-align: center;
+  border-style: none;
+  border: 1px solid cornflowerblue;
+}
+.g-outbox .m-outbox .u-errormsg,
+.g-inbox .m-outbox .u-errormsg,
+.g-outbox .m-inbox .u-errormsg,
+.g-inbox .m-inbox .u-errormsg {
+  height: 10px;
+  font-size: 12px;
+  color: red;
+}
+.g-outbox .m-outbox .u-btn,
+.g-inbox .m-outbox .u-btn,
+.g-outbox .m-inbox .u-btn,
+.g-inbox .m-inbox .u-btn {
+  margin: 20px auto;
+  width: 60%;
+  height: 40px;
+  background-color: cornflowerblue;
+  color: ghostwhite;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+}
+.g-changebox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.g-changebox .m-changebox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 50%;
+  height: 50px;
+  background-color: #fff;
+  color: cornflowerblue;
+  border-top: 1px solid darkgray;
+  border-left: 1px solid darkgray;
+  border-right: 1px solid darkgray;
+}
+.g-changebox .m-changebox li {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  line-height: 50px;
+  text-align: center;
+  border-bottom: 1px solid darkgray;
+}
